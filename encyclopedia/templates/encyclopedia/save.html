@@ -1,0 +1,26 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %} New entry {% endblock %}
+
+{% block body %}
+{% if error %}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {{ error }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>    
+</div>
+{% endif %}
+<h3>Create new entry:</h3>
+<form method="post">
+    {% csrf_token %}
+    <div class="form-group mt-3">    
+        <input type="text" class="form-control mb-2" name="title" placeholder="Title">
+        <textarea type="textarea" class="form-control" name="entry" rows="10" placeholder="Write description here..."></textarea>
+    </div>
+    <div class="form-group mt-3">
+        <input class="btn btn-primary" type="submit" value="Save">
+    </div>  
+</form>
+
+{% endblock %}
